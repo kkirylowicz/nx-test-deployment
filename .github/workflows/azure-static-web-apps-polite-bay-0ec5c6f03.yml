@@ -18,6 +18,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
+      - name: 'npm install and build'
+        id: testnode
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_BAY_0EC5C6F03 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
       - task: NodeTool@0
         inputs:
           versionSpec: '18.x'
@@ -26,7 +32,6 @@ jobs:
           npm install
           npm run test
           npm run build
-        displayName: 'npm install and build'
 
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
