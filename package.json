@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx build qwerty --configuration production"
+    "build": "nx build qwerty --configuration production",
+    "test": "nx test qwerty"
   },
   "private": true,
   "dependencies": {
